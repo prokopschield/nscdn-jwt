@@ -56,7 +56,7 @@ export async function createPrivateKeyFile(
 	const directory = path.resolve(file, '..');
 
 	if (!fs.existsSync(directory)) {
-		await fs.promises.mkdir(directory);
+		await fs.promises.mkdir(directory, { recursive: true });
 	}
 
 	const { privateKey } = await openpgp.generateKey({
