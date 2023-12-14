@@ -1,9 +1,9 @@
-import fs from 'fs';
-import * as openpgp from 'openpgp';
-import os from 'os';
-import path from 'path';
+import fs from "fs";
+import * as openpgp from "openpgp";
+import os from "os";
+import path from "path";
 
-import { Token } from './token';
+import { Token } from "./token";
 
 export { openpgp, Token };
 
@@ -45,7 +45,7 @@ export async function readToken(token: string, key: openpgp.PrivateKey) {
 export async function loadPrivateKeyFile(
 	file: string
 ): Promise<openpgp.PrivateKey> {
-	const key_data = await fs.promises.readFile(file, 'utf-8');
+	const key_data = await fs.promises.readFile(file, "utf-8");
 
 	return await openpgp.readPrivateKey({ armoredKey: key_data });
 }
@@ -53,7 +53,7 @@ export async function loadPrivateKeyFile(
 export async function createPrivateKeyFile(
 	file: string
 ): Promise<openpgp.PrivateKey> {
-	const directory = path.resolve(file, '..');
+	const directory = path.resolve(file, "..");
 
 	if (!fs.existsSync(directory)) {
 		await fs.promises.mkdir(directory, { recursive: true });
@@ -61,8 +61,8 @@ export async function createPrivateKeyFile(
 
 	const { privateKey } = await openpgp.generateKey({
 		userIDs: [{ name: process.env.NAME || process.env.USER }],
-		curve: 'ed25519',
-		format: 'object',
+		curve: "ed25519",
+		format: "object",
 	});
 
 	await fs.promises.writeFile(file, privateKey.armor());
@@ -72,7 +72,7 @@ export async function createPrivateKeyFile(
 }
 
 export async function usePrivateKeyFile(
-	file: string = path.resolve(os.homedir(), '.config/nscdn-jwt/private.key')
+	file: string = path.resolve(os.homedir(), ".config/nscdn-jwt/private.key")
 ): Promise<openpgp.PrivateKey> {
 	try {
 		return await loadPrivateKeyFile(file);
