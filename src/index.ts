@@ -1,3 +1,4 @@
+import assert from "assert";
 import fs from "fs";
 import * as openpgp from "openpgp";
 import os from "os";
@@ -34,7 +35,10 @@ export async function readToken(token: string, key: openpgp.PrivateKey) {
 	try {
 		const token_object = await Token.fromHash(token, key.toPublic());
 
-		token_object.verify(key.toPublic());
+		assert(
+			token_object.verify(key.toPublic()),
+			"Token not signed by correct key."
+		);
 
 		return token_object.data;
 	} catch {
