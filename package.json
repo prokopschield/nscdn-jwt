@@ -10,11 +10,11 @@
 	"dependencies": {
 		"@openpgp/web-stream-tools": "^0.0.13",
 		"nsblob64": "^0.2.24",
-		"openpgp": "^5.11.0",
-		"ps-std": "^0.1.27"
+		"openpgp": "^5.11.2",
+		"ps-std": "^0.1.47"
 	},
 	"devDependencies": {
-		"@types/node": "^16"
+		"@types/node": "^22.7.7"
 	},
 	"license": "GPL-3.0-or-later",
 	"types": "./lib/index.d.ts",
