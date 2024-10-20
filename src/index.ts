@@ -14,15 +14,11 @@ export { openpgp, Token };
  * @param key private key to sign the token
  * @returns the token as a base64 string
  */
-export async function createToken<T>(
+export function createToken<T>(
 	data: T,
 	key: openpgp.PrivateKey
 ): Promise<string> {
-	const token = new Token<T>(data);
-
-	await token.sign(key);
-
-	return await token.hash();
+	return new Token<T>(data).sign(key);
 }
 
 /**
