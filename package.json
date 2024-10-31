@@ -1,7 +1,7 @@
 {
 	"name": "nscdn-jwt",
 	"description": "nscdn-backed web tokens",
-	"version": "0.1.0-4",
+	"version": "0.1.0-5",
 	"main": "lib/index.js",
 	"bin": {
 		"nscdn-jwt": "lib/cli.js"
@@ -9,9 +9,9 @@
 	"author": "Prokop Schield",
 	"dependencies": {
 		"@openpgp/web-stream-tools": "^0.0.13",
-		"nsblob64": "^0.2.24",
+		"nsblob64": "^0.2.25",
 		"openpgp": "^5.11.2",
-		"ps-std": "^0.1.47"
+		"ps-std": "^0.1.48"
 	},
 	"devDependencies": {
 		"@types/node": "^22.7.7"
