@@ -9,9 +9,9 @@
 	"author": "Prokop Schield",
 	"dependencies": {
 		"@openpgp/web-stream-tools": "^0.0.13",
-		"nsblob64": "^0.2.25",
+		"nsblob64": "^0.2.27",
 		"openpgp": "^5.11.2",
-		"ps-std": "^0.1.48"
+		"ps-std": "^0.1.49"
 	},
 	"devDependencies": {
 		"@types/node": "^22.7.7"
