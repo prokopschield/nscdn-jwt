@@ -1,6 +1,7 @@
 import assert from "assert";
 import nsblob from "nsblob64";
 import * as openpgp from "openpgp";
+import { protect } from "ps-std";
 
 const GENERIC_DESER_ERROR =
 	"Token.fromHash() was passed something that is not a Token";
@@ -15,9 +16,11 @@ export class Token<T> {
 	}
 
 	get data(): T {
-		return typeof this._data === "object"
-			? Object.setPrototypeOf({}, this._data)
-			: this._data;
+		if (!this._data || typeof this._data !== "object") {
+			return this._data;
+		}
+
+		return protect(this._data);
 	}
 
 	async datahash(): Promise<string> {
